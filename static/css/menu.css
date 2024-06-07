@@ -1,0 +1,99 @@
+/* Reset de estilos */
+body, ul {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+}
+
+header {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+nav ul {
+    list-style-type: none;
+}
+
+nav ul li {
+    margin-bottom: 15px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+    display: block;
+    padding: 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+nav a:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .container {
+        padding: 0 10px;
+    }
+    nav a {
+        font-size: 16px;
+    }
+}
+
+/* Active State */
+nav a[aria-current="page"] {
+    background-color: #007bff;
+    color: #fff;
+}
+
+/* Animation */
+nav a {
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+nav a:hover {
+    transform: translateY(-3px);
+}
+
+/* Typography */
+h1, h2, nav a {
+    font-weight: bold;
+}
+
+h1 {
+    font-size: 24px;
+    color: #333;
+}
+
+h2 {
+    font-size: 20px;
+    color: #000;
+}
+
+/* Color Scheme */
+body {
+    color: #333;
+}
+
+nav a {
+    background-color: #fff;
+}
+
+/* Error Handling */
+nav a[href="#"] {
+    color: #ccc;
+    cursor: not-allowed;
+}

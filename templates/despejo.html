@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}"> 
+    
+    
+</head>
+<body>
+    <h1>Lista de Despejo</h1>
+    
+
+    
+    <div id="editar-campos" class="hidden">
+        <h2 class="inserir-texto">Editar</h2>
+        <form id="editar-form" action="/editarDes" method="post">
+            <input type="hidden" id="editar-id" name="id">
+            <label for="editar-entidade">Entidade:</label><br>
+            <input type="text" id="editar-entidade" name="entidade"><br>
+            <label for="editar-codigo">Código:</label><br>
+            <input type="text" id="editar-codigo" name="codigo"><br>
+            <label for="editar-ano">Ano:</label><br>
+            <input type="number" id="editar-ano" name="ano"><br>
+            <label for="editar-participacao">Participação:</label><br>
+            <input type="float" id="editar-participacao" name="participacao"><br>
+            <input type="submit" value="Salvar">
+        </form>
+    </div>
+
+    <div class="div-json">
+        <form action="/search_filter_despejo" method="POST"> 
+            <input type="text" name="search" placeholder="Pesquisar...">
+            <button type="submit">Filtrar</button>
+        </form>
+    
+        <form action="/export_json" method="POST"> 
+            <input type="hidden" name="search" value="{{ request.form.get('search', '') }}">
+            <button type="submit">Exportar JSON</button>
+        </form> 
+    </div>
+
+  
+
+    
+
+
+    <button id="inserir-btn">Inserir</button>
+
+    <div id="inserir-campos" class="hidden">
+        <h2 class="inserir-texto">Inserir</h2>
+        <form action="/despejo" method="post">
+            <label for="entidade">Entidade:</label><br>
+            <input type="text" id="entidade" name="entidade"><br>
+            <label for="codigo">Código:</label><br> 
+            <input type="text" id="codigo" name="codigo"><br> 
+            <label for="ano">Ano:</label><br>
+            <input type="number" id="ano" name="ano"><br>
+            <label for="ano">Participação:</label><br>
+            <input type="float" id="participacao" name="participacao"><br>       
+            <input type="submit" value="Inserir">
+        </form>
+    </div>
+    <script src="{{ url_for('static', filename='js/script2.js') }}"></script>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Entidade</th>
+                <th>Código</th>
+                <th>Ano</th>  
+                <th>Participacao</th> 
+            </tr>
+        </thead>
+        <tbody>
+            {% for dado in dados %}
+            <tr>
+                <td>{{ dado.id }}</td>
+                <td>{{ dado.entidade }}</td>
+                <td>{{ dado.codigo }}</td>
+                <td>{{ dado.ano }}</td> 
+                <td>{{ dado.participacao }}</td>
+                <td>
+                    <button class="excluir-btn" data-id="{{ dado.id }}">Excluir</button>
+                    <button class="editar-btn" data-id="{{ dado.id }}">Editar</button>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
