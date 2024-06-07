@@ -7,10 +7,10 @@ import os
 
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
-# Define a database connection engine
+
 engine = create_engine('oracle://', creator=get_oracle_connection)
 
-# Create a declarative base
+# Criando uma base
 Base = declarative_base()
 
 
@@ -33,10 +33,10 @@ class ParticipacaoDespejo(Base):
     ano = Column(Integer, nullable=False)
     participacao = Column(Float, nullable=False)
 
-# Create tables in the database
+# Criando as tabelas
 Base.metadata.create_all(engine)
 
-# Function to read CSV file and insert data into the corresponding table
+# Ler o csv e inserir nas respectivas tabelas
 def insert_csv_data_into_table(session, csv_file, TableClass):
     try:
         with open(csv_file, 'r', newline='') as file:
@@ -45,10 +45,10 @@ def insert_csv_data_into_table(session, csv_file, TableClass):
 
             
             for row in reader:
-                # Ignore the first column (index column)
+                
                 row = {key: value for key, value in row.items() if key != ''}
                 
-                print("Row:", row)  # Add this line to debug
+                print("Row:", row)  
                 
                 record = TableClass(**row)
                 session.add(record)
@@ -64,7 +64,7 @@ def main():
     Session = sessionmaker(bind=engine)
     session = Session()
     
-    # CSV files and corresponding table classes
+    
     csv_files = ['testeplastico.csv', 'testedespejo.csv']
     table_classes = [ProducaoPlastico, ParticipacaoDespejo]
     

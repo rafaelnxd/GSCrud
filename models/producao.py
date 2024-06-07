@@ -22,7 +22,7 @@ def producao():
                 db.session.rollback()
                 return jsonify({'message': 'Erro ao inserir'}), 500
 
-        # Use the session object to query the database
+        
         dados = db.session.query(ProducaoPlastico).all()
         return render_template('producao.html', dados=dados)
     except Exception as e:
