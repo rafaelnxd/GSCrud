@@ -29,27 +29,18 @@ Configuração do Ambiente
 
 1.  **Clone o repositório**
 
-    sh
-
-    Copiar código
 
     `git clone <https://github.com/rafaelnxd/GSCrud>
     cd <GSCrud>`
 
 2.  **Crie um ambiente virtual e ative-o**
 
-    sh
-
-    Copiar código
 
     `python -m venv venv
     source venv/bin/activate  # No Windows, use `venv\Scripts\activate``
 
 3.  **Instale as dependências**
 
-    sh
-
-    Copiar código
 
     `pip install -r requirements.txt`
 
@@ -67,17 +58,9 @@ Execução
 
 1.  **Execute a aplicação**
 
-    sh
-
-    Copiar código
-
     `python app.py`
 
 2.  **Acesse no navegador**
-
-    arduino
-
-    Copiar código
 
     `http://127.0.0.1:5000`
 
